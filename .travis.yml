@@ -1,0 +1,14 @@
+sudo: required
+
+language: ruby
+
+services:
+  - docker
+  - git
+
+before_install:
+- docker pull deferdie/php:latest
+- docker run --rm -it deferdie/php:latest composer"
+
+script:
+- composer install
