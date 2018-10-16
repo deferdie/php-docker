@@ -1,10 +1,12 @@
-FROM alpine:latest
+FROM alpine:3.7
+
+RUN apk add --update libcurl curl libxml2-dev
 
 # Install PHP and various php dependencies
-RUN apk add php7 php7-fpm php7-openssl php7-pdo_mysql \
+RUN apk add php7 php7-fileinfo php7-intl php7-bz2 php7-apcu php7-fpm php7-openssl php7-pdo_mysql \
     php7-mbstring php7-tokenizer php7-xml php7-ctype \
     php7-json php7-session php7-dom php7-curl php7-bcmath \
-    php7-xmlwriter curl zlib php7-phar openssh-client
+    php7-xmlwriter zlib php7-phar php7-zip openssh-client
 
 ## Copying php default settings
 COPY ./php-fpm.conf /etc/php7/
